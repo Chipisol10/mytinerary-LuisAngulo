@@ -30,7 +30,7 @@ const NavBar = () => {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? 'text-blue-600' : 'hover:text-blue-600 transition border-b-2 border-transparent hover:border-blue-600'
+              isActive ? 'text-blue-900' : 'text-blue-200 hover:text-blue-600 transition border-b-2 border-transparent hover:border-blue-600'
             }
           >
             Home
@@ -38,7 +38,7 @@ const NavBar = () => {
           <NavLink
             to="/cities"
             className={({ isActive }) =>
-              isActive ? 'text-blue-600' : 'hover:text-blue-600 transition border-b-2 border-transparent hover:border-blue-600'
+              isActive ? 'text-blue-600' : ' text-blue-200  hover:text-blue-600 transition border-b-2 border-transparent hover:border-blue-600'
             }
           >
             Cities
