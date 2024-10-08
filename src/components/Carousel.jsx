@@ -42,11 +42,11 @@ const Carousel = () => {
 
   return (
     <div className="relative w-full max-w-screen-xl mx-auto my-4">
-      <div className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-2 lg:grid-rows-2">
         {slides[currentSlide].map((city, index) => (
           <div 
             key={index} 
-            className="snap-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0 bg-gray-200"
+            className="w-full flex-shrink-0 bg-gray-200"
           >
             <img 
               src={city.img} 
@@ -74,3 +74,6 @@ const Carousel = () => {
 };
 
 export default Carousel;
+
+
+
