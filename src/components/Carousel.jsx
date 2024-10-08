@@ -22,7 +22,7 @@ const Carousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 2000); 
+    }, 3000); 
     return () => clearInterval(interval); 
   }, [currentSlide]);
 
@@ -41,7 +41,7 @@ const Carousel = () => {
   ];
 
   return (
-    <div className="relative w-full max-w-screen-xl mx-auto">
+    <div className="relative w-full max-w-screen-xl mx-auto my-4">
       <div className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth">
         {slides[currentSlide].map((city, index) => (
           <div 
@@ -53,7 +53,7 @@ const Carousel = () => {
               alt={city.name} 
               className="w-full h-64 object-cover" 
             />
-            <p className="text-center bg-slate-300 text-lg font-semibold mt-2">{city.name}</p>
+            <p className="text-center  bg-blue-500 text-lg font-semibold ">{city.name}</p>
           </div>
         ))}
       </div>
