@@ -6,7 +6,7 @@ const Hero = () => {
     <section className="relative bg-hero-pattern bg-cover bg-center h-screen flex flex-col justify-center items-center text-center text-white p-4">
       <div className="absolute  md:h-[1050px]  lg:h-[950px]  inset-0">
         <img
-          src="https://images.unsplash.com/photo-1536087199301-871f4ea11e85?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHZpYWplc3xlbnwwfHwwfHx8MA%3D%3D"
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTh8fHxlbnwwfHx8fHw%3D"
           alt="Travel destinations"
           className="w-full h-full object-cover"
         />
