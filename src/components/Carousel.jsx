@@ -53,7 +53,7 @@ const Carousel = () => {
               alt={city.name} 
               className="w-full h-64 object-cover" 
             />
-            <p className="text-center  bg-blue-500 text-lg font-semibold ">{city.name}</p>
+            <p className="text-center  bg-blue-400 text-lg font-semibold ">{city.name}</p>
           </div>
         ))}
       </div>
