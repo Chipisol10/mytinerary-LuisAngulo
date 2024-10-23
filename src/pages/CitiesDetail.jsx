@@ -14,7 +14,7 @@ const CitiesDetails = () => {
       <img 
         src={location.state.photo} 
         alt={`Image of ${location.state.name}`} 
-        className="w-full max-w-3xl h-96 object-cover mb-6 md:w-[800px] md:h-[500px]" 
+        className="w-full max-w-3xl h-96 object-cover mb-6  rounded-lg  md:w-[800px] md:h-[500px]" 
       />
       <p className="text-center py-3 text-xl text-white drop-shadow-md mb-6">
         Sorry for the inconvenience but this page is currently being rebuilt to provide a pleasant experience

@@ -51,8 +51,8 @@ const CityGrid = () => {
     </p>
   ) : ''}
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-        
+    <div className={`grid gap-4 ${cities.length > 0 && cities.length <= 4 ? 'grid-cols-1 justify-center' : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'}`}>
+   
         {cities.map((city, index) => (
           <div key={index} className="bg-blue-200 rounded-lg shadow-lg overflow-hidden transform transition-transform hover:scale-105">
             <img src={city.photo} alt={city.name} className="w-full h-40 object-cover sm:h-48 md:h-56 lg:h-64 xl:h-72" />
