@@ -36,20 +36,23 @@ const CityGrid = () => {
     navigate('/city',{state:city})
   }
   return (
-    <div className="p-4">
-      <div className="mb-6">
-        <input
-          type="text"
-          className="w-full p-2 border border-gray-300 rounded-lg"
-          placeholder='Enter a Text'
-          onChange={(e) => handlerSearch(e) }
-        />
-      </div>
+  <div className="flex flex-col items-center p-4">
+  <div className="mb-6 w-full max-w-md md:max-w-lg lg:max-w-xl">
+    <input
+      type="text"
+      className="w-full p-2 border border-gray-300 rounded-lg"
+      placeholder="Enter a Text"
+      onChange={(e) => handlerSearch(e)}
+    />
+  </div>
+  {cities.length === 0 ? (
+    <p className="text-center text-white bg-blue-500 p-4 w-full max-w-md">
+      There are no cities with that letter.
+    </p>
+  ) : ''}
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-        {cities.length === 0 ? (
-          <p className="text-center text-white bg-blue-500 p-4">There are no cities with that letter.</p>
-        ) : ''}
+        
         {cities.map((city, index) => (
           <div key={index} className="bg-blue-200 rounded-lg shadow-lg overflow-hidden transform transition-transform hover:scale-105">
             <img src={city.photo} alt={city.name} className="w-full h-40 object-cover sm:h-48 md:h-56 lg:h-64 xl:h-72" />
