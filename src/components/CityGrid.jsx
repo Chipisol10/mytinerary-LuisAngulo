@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useNavigate } from 'react-router-dom'; 
-import { search } from '../store/action/actionCity';
+import { fetchCities, search } from '../store/action/actionCity';
 
 const CityGrid = () => {
-  const {cities} = useSelector(state => state.reducerCities)
+  const {cities,searchQuery} = useSelector(state => state.reducerCities)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  
+  useEffect(()=>{
+    dispatch(fetchCities())
+    dispatch(search(""))
+  },[])
   
   const handlerNavigate = (city) => {
     navigate('/city',{state:city})
@@ -16,6 +19,7 @@ const CityGrid = () => {
   <div className="flex flex-col items-center p-4">
   <div className="mb-6 w-full max-w-md md:max-w-lg lg:max-w-xl">
     <input
+      value={searchQuery}
       type="text"
       className="w-full p-2 border border-gray-300 rounded-lg"
       placeholder="Enter a Text"
