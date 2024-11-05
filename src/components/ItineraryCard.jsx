@@ -32,7 +32,7 @@ const ItineraryCard = ({ itinerary }) => {
   };
 
   return (
-    <div className="bg-blue-400 rounded-lg shadow-lg p-4 flex flex-col items-center">
+    <div className="bg-blue-300 rounded-lg shadow-lg p-4 flex flex-col items-center">
       <div className="relative w-full">
         <img
           src={itinerary.photo}
