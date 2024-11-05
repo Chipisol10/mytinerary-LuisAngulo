@@ -1,37 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {  useNavigate } from 'react-router-dom'; 
+import { search } from '../store/action/actionCity';
 
 const CityGrid = () => {
+  const {cities} = useSelector(state => state.reducerCities)
   const navigate = useNavigate()
-  const [cities, setCities] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(''); 
-
-  useEffect(() => {
-    if(searchQuery === '') {
-      fetch('http://localhost:8080/api/cities/all')
-      .then(response => response.json())
-      .then(data => {
-        if (data && data.response) {
-          setCities(data.response);
-        }
-      })
-      .catch(error => console.error('Error fetching cities:', error));
-    } else {
-      fetch(`http://localhost:8080/api/cities/all?name=${searchQuery}`) 
-      .then(response => response.json())
-      .then(data => {
-        if (data && data.response) {
-          setCities(data.response);
-        }
-      })
-      .catch(error => console.error('Error fetching cities:', error));
-    }
-    
-  }, [searchQuery]);
-
-  const handlerSearch = (even) => {
-    setSearchQuery(even.target.value);
-  }
+  const dispatch = useDispatch()
+  
+  
   const handlerNavigate = (city) => {
     navigate('/city',{state:city})
   }
@@ -42,7 +19,7 @@ const CityGrid = () => {
       type="text"
       className="w-full p-2 border border-gray-300 rounded-lg"
       placeholder="Enter a Text"
-      onChange={(e) => handlerSearch(e)}
+      onChange={(e) => dispatch(search(e.target.value))}
     />
   </div>
   {cities.length === 0 ? (

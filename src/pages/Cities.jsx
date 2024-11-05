@@ -1,5 +1,5 @@
 import React from 'react';
-import CityGrid from '../components/CityGrid';//se agrego nuevo 
+import CityGrid from '../components/CityGrid';
 
 
 
