@@ -70,7 +70,7 @@ const ItineraryCard = ({ itinerary }) => {
               expandedItinerary === itinerary._id ? null : itinerary._id
             )
           }
-          className="text-white hover:bg-blue-700 bg-blue-600 py-2 px-4 rounded-xl w-full md:w-auto flex items-center justify-center gap-2"
+          className="text-white hover:bg-blue-600 bg-blue-500 py-2 px-4 rounded-xl w-full md:w-auto flex items-center justify-center gap-2"
         >
           <span>{expandedItinerary === itinerary._id ? 'View less' : 'View more'}</span>
           {expandedItinerary === itinerary._id ? <FaChevronUp /> : <FaChevronDown />}
