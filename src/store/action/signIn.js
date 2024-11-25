@@ -1,18 +1,27 @@
-// login
-
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const loginIN = createAsyncThunk("LOG_IN",async(user)=>{
-   
-    console.log("user",user);
+const setUser = createAction("setUser")
+
+const logout = createAction ("logout");
+
+const login = createAsyncThunk('login', async({email,password}) => {
+    console.log("Entramos al Login")
     
-    try {
-        const userResponde = await axios.post('http://localhost:8080/api/auth/signIn',user)
-        return userResponde.data
-    } catch (error) {
-        return(error)
+    
+    const credentials = {
+        email:email,
+        password:password
     }
+
+    const response = await axios.post("http://localhost:8080/api/auth/signIn", credentials)
+    console.log("Se proceso la solicitud");
+    console.log("Response",response.data);
+    console.log("Superamos la solicitud de Login");
+    
+    localStorage.setItem("token",response.data.token)
+    
+    return response.data
 })
 
-export { loginIN }
+export { login, setUser, logout };
