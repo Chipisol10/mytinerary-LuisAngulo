@@ -1,13 +1,19 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Menu, X, UserCircle2 } from 'lucide-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { isLoggedIn, selectUser, logout } from '../store/action/signIn'; 
 
 const NavBar = () => {
   const [click, setClick] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const userMenuRef = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch(); 
+
+  const user = useSelector(selectUser); 
+  const loggedIn = useSelector(isLoggedIn); 
 
   const handleClick = () => {
     setClick(!click);
@@ -28,7 +34,7 @@ const NavBar = () => {
   };
 
   const handleSignOut = () => {
-    setIsLoggedIn(false);
+    dispatch(logout()); 
     setShowUserMenu(false);
   };
 
@@ -48,12 +54,10 @@ const NavBar = () => {
   return (
     <nav className="bg-slate-900">
       <div className="h-[10vh] flex justify-between items-center px-4 md:px-8 lg:px-20">
-       
         <div className="flex items-center space-x-3">
           <span className="text-3xl font-bold text-white">MyTinerary</span>
         </div>
 
-       
         <div className="hidden lg:flex items-center space-x-8">
           <NavLink
             to="/"
@@ -77,21 +81,15 @@ const NavBar = () => {
           </NavLink>
         </div>
 
-      
         <div className="flex items-center space-x-4">
-      
           <div className="relative flex items-center" ref={userMenuRef}>
             <button
               onClick={toggleUserMenu}
               className="flex items-center space-x-2 focus:outline-none"
               aria-label="User menu"
             >
-              {isLoggedIn ? (
-                <img
-                  src="https://via.placeholder.com/40"
-                  alt="User"
-                  className="w-10 h-10 rounded-full object-cover"
-                />
+              {loggedIn ? (
+                <span className="text-white">{user?.name?.toUpperCase()}</span>
               ) : (
                 <>
                   <UserCircle2 className="text-white w-8 h-8 hover:text-blue-400 transition-colors duration-200" />
@@ -102,12 +100,9 @@ const NavBar = () => {
               )}
             </button>
 
-         
             {showUserMenu && (
-              <div
-                className="absolute right-0 top-[120%] w-48 bg-blue-300 rounded-md shadow-lg py-1 z-10"
-              >
-                {!isLoggedIn ? (
+              <div className="absolute right-0 top-[120%] w-48 bg-blue-300 rounded-md shadow-lg py-1 z-10">
+                {!loggedIn ? (
                   <>
                     <button
                       onClick={handleSignIn}
@@ -134,7 +129,6 @@ const NavBar = () => {
             )}
           </div>
 
-    
           <button
             className="lg:hidden"
             onClick={handleClick}
@@ -148,7 +142,6 @@ const NavBar = () => {
           </button>
         </div>
       </div>
-
 
       {click && (
         <div className="lg:hidden bg-slate-800 transition-all ease-in-out duration-300">

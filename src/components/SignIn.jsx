@@ -8,8 +8,8 @@ const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const reducerStore = useSelector(state => state.reducerStore);
-  console.log("Estado del", reducerStore);
+  const auth = useSelector(state => state.auth);
+  console.log("Estado del Auth", auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,4 +83,6 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
+
 

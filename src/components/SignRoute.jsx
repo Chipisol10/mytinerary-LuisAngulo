@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux"
-import { Navigate, replace } from "react-router-dom";
+import { Navigate, Outlet, replace } from "react-router-dom";
 
-function SignRoute({children}) {
-    const token = useSelector(state.authReducer.token);
+function SignRoute() {
+    const token = useSelector((state)=> state.auth.token);
+    console.log("token",token);
+    
     if (token) 
         return <Navigate to={"/"} replace></Navigate>
-        return children
+    return <Outlet></Outlet>
     
 }
 
